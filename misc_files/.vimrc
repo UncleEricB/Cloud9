@@ -107,20 +107,23 @@ filetype plugin indent on
 syntax on
 syntax enable
 
-" show whitespace, tabs, weird stuff
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-au InsertLeave * match ExtraWhitespace /\s\+$/
+" Show trailing whitepace and spaces before a tab:
+highlight ExtraWhitespace ctermbg=LightGreen guibg=LightGreen
+match ExtraWhitespace /\s\+$/
+autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
 
 " theme
 set t_Co=256
-color tomorrow
+"Plug 'chriskempson/base16-vim'
+"color tomorrow
 
 " line numbers and length
 set number  " show line numbers
 set tw=99   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=100
+"set nowrap  " don't automatically wrap on load
+"set fo-=t   " don't automatically wrap text when typing
+set textwidth=120
+set colorcolumn=120
 
 " show current curser / line
 set cursorline
